@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormularioController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="container">
+    {% if numeroAdivinado %}    
+    <div class="row">
+        <div class="mx-auto mt-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="alert alert-success" role="alert">
+                ¡Adivinado! Tu número es el {{ numeroAdivinado }}.
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="mx-auto mt-2 col-lg-4 col-md-6 col-sm-12">
+            <div class="card shadow-sm bg-light">
+                <div class="card-body">
+                {{ form_start(formulario) }}
+                    <div class="text-danger">
+                        {{ form_errors(formulario) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(
+                            formulario.valor,{
+                                'label_attr':{'class':'form-label'},
+                                'attr':{'class':'form-control'}
+                            }
+                        ) }}
+                    </div>
+                    {{ form_row(
+                        formulario.Enviar, {
+                            'attr':{'class':'btn btn-primary float-right'}
+                        }
+                    ) }}
+                {{ form_end(formulario) }}
+                </div>
+            </div>
+        </div>
+         
+    </div>
+
+
+</div>
+
+{% endblock %}
